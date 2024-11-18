@@ -46,6 +46,12 @@ class Request{
                 //echo $_POST["btn-del-county"];
                 $client->delete('counties',$_POST['btn-del-county']);
                 break;
+            case isset($request['btn-save-county']):
+                $data= ['name' => $request['name']];
+                var_dump($data);
+                die;
+                $client->post('counties',$data);
+                break;
         }
     }
     private static function getCounties() : array

@@ -38,17 +38,16 @@ class Client /*implements ClientInterface*/ {
     function post($url, array $data = [])
     {
         $json = json_encode($data);
-    //        $username = Config::getUser();
-    //        $password = Config::getPassword();
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-    //        curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
+   
         curl_setopt($curl, CURLOPT_URL, $this->url . $url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Content-Length: ' . strlen($json)]);
         curl_setopt($curl, CURLOPT_POST, TRUE);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
         $response = curl_exec($curl);
-//        $result = self::getResult($response, $curl, $url);
+
         if (!$response) {
             trigger_error(curl_error($curl));
         }
@@ -61,12 +60,11 @@ class Client /*implements ClientInterface*/ {
     {
         $url = $this->getUrl() . $route ."/".$id;
         $json = json_encode(['id' => $id]);
-        //    $username = Config::getUser();
-        //    $password = Config::getPassword();
+
  
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        //    curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
+       
         curl_setopt($curl, CURLOPT_URL, $this->url . $url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");

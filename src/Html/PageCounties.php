@@ -18,10 +18,14 @@ class PageCounties extends AbstractPage
             <th class="id"-col>#</th>
             <th>Megnevezés</th>
             <th style="display: felx">Művelet&nbsp;
-                <button id="brn-add" title="Új">+</button>
+                <form method="POST">
+                <button name="btn-add" id="btn-add" title="Új">+</button>
+                </form>
             </th>
         </tr>
-        <tr id="editor" class="hidden">
+        <tr id="editor" class="hidden">';
+        self::editor();
+        echo '
         </tr>
        </thead>';
     }
@@ -64,8 +68,8 @@ class PageCounties extends AbstractPage
         echo'<th>&nbsp;</th>
         <th>
          <form name="county-editor" method="post" action="">
-             <input type="hidden" name="id" id="id">
-             <input type="search" id="name" name="name" placeholder="Megye" required>
+             <input type="hidden" name="id_county" id="id_county">
+             <input type="search" id="county_name" name="county_name" placeholder="Megye" required>
              <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save"></i></button>
              <button type="button" id="btn-cancel-county" name="btn-cancel-county" title="Megse"><i class="fa fa-cancel"></i></button>
          </form>
