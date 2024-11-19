@@ -3,6 +3,7 @@
 namespace App\Html;
 
 use App\RestApiClient\Client;
+use App\Html\PageCounties;
 
 class Request{
     static function handle()
@@ -36,6 +37,7 @@ class Request{
     {
         $request = $_REQUEST;
         $client = new Client();
+        $page = new PageCounties();
         switch ($request) {
             case isset($request['btn-home']) :
                 break;
@@ -46,11 +48,22 @@ class Request{
                 //echo $_POST["btn-del-county"];
                 $client->delete('counties',$_POST['btn-del-county']);
                 break;
+            case isset($request['btn-edit']):
+                $page->editor();
+                break;
             case isset($request['btn-save-county']):
-                $data= ['name' => $request['name']];
+                
+                $name = $request['county-name'];
+                $id =  $request['id-county'];
+                $data['name'] = $name;
+                $data['id'] = $id;
                 var_dump($data);
-                die;
-                $client->post('counties',$data);
+                //die;
+                $client->put('counties/'.$id,$data);
+                break;
+            case isset($request['brn-add']):               
+                $data['name'] = $request['new-county'];
+                $client->post('counties', $data);
                 break;
         }
     }
@@ -62,9 +75,5 @@ class Request{
         return $response['data'];
     }
 
-    private static function deleteCounty($id)
-    {
-
-    }
     
 }

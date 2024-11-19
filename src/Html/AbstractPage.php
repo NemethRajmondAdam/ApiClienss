@@ -18,7 +18,7 @@ abstract class AbstractPage implements PageInterface{
             <link href="css/app.css" rel="stylesheet" type="text/css">
             <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
             
-            <script src="srcipt.js"></script>
+            <script src="script.js"></script>
 
             <!-- Icons -->
             <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -44,7 +44,7 @@ abstract class AbstractPage implements PageInterface{
     }
     static function searchBar(){
         echo'<form method="post" action="">
-            <input type="search" id="needle" name="needle" placeholder="Keres">
+            <input type="search" name="needle" placeholder="Keres">
                 <button type="submit" id="btn-search" name="btn-search" title="Keres">
                     <i class="fa fa-search"></i>
                 </button>
