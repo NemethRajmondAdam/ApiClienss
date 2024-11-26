@@ -19,7 +19,8 @@ class PageCounties extends AbstractPage
             <th>Megnevezés</th>
             <th style="display: felx">Művelet&nbsp;
             <form method="POST">
-                <button id="brn-add" title="Új">+</button>
+                <button type="submit" id="brn-add" name="brn-add" title="Új">+</button>
+                <input type="search" id="new-county" name="new-county" placeholder="Uj Megye">
                 </form>
             </th>
         </tr>
@@ -69,7 +70,6 @@ class PageCounties extends AbstractPage
          <form name="county-editor" method="post" action="">
              <input type="hidden" name="id-county" id="id-county">
              <input type="search" id="county-name" name="county-name" placeholder="Megye" required>
-             <input type="search" id="new-county" name="new-county" placeholder="Uj Megye" required>
              <button type="submit" id="btn-save-county" name="btn-save-county" title="Ment"><i class="fa fa-save"></i></button>
              <button type="button" id="btn-cancel-county" name="btn-cancel-county" title="Megse"><i class="fa fa-cancel"></i></button>
          </form>

@@ -38,6 +38,7 @@ class Request{
         $request = $_REQUEST;
         $client = new Client();
         $page = new PageCounties();
+        var_dump($request);
         switch ($request) {
             case isset($request['btn-home']) :
                 break;
@@ -57,8 +58,6 @@ class Request{
                 $id =  $request['id-county'];
                 $data['name'] = $name;
                 $data['id'] = $id;
-                var_dump($data);
-                //die;
                 $client->put('counties/'.$id,$data);
                 break;
             case isset($request['brn-add']):               
@@ -71,6 +70,14 @@ class Request{
     {
         $client = new Client();
         $response = $client->get('counties');
+
+        return $response['data'];
+    }
+
+    private static function getCities(): array
+    {
+        $client = new Client();
+        $response = $client->get('cities');
 
         return $response['data'];
     }
